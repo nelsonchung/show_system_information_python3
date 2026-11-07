@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>樹莓派 · 系統觀測站</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body><main><header><div><p class="eyebrow">RASPBERRY PI / SYSTEM MONITOR</p><h1>系統觀測站 <span class="badge">唯讀原型</span></h1><p id="identity">連線中…</p></div><button id="refresh">立即更新</button></header>
+<div class="toolbar"><span id="status" role="status">正在取得資料</span><label><input id="auto" type="checkbox" checked> 每 5 秒更新系統資訊</label></div>
+<section class="metrics" id="metrics" aria-label="即時資訊"></section>
+<section class="panel"><h2>儲存空間</h2><div id="disks"></div></section>
+<section class="panel"><h2>網路介面 <small>自開機或介面建立以來的累計流量</small></h2><div class="table-wrap"><table><thead><tr><th>介面</th><th>狀態</th><th>接收</th><th>傳送</th></tr></thead><tbody id="network"></tbody></table></div></section>
+<section class="panel"><h2>IP 位址與 Wi-Fi 訊號</h2><p id="network-detail-status" role="status">正在取得資料…</p><div class="table-wrap"><table><thead><tr><th>介面</th><th>IPv4 / IPv6</th><th>Wi-Fi 訊號</th></tr></thead><tbody id="network-details"></tbody></table></div></section>
+<section class="panel"><h2>服務異常狀態 <small>系統層級 systemd：處於 failed 的服務</small></h2><p id="services-status" role="status">正在取得資料…</p><div class="table-wrap"><table><thead><tr><th>服務</th><th>載入</th><th>狀態</th><th>子狀態</th><th>說明</th></tr></thead><tbody id="services"></tbody></table></div></section>
+<section class="panel"><h2>程序資源排行 <small>各列出前 10 名；CPU 為程序啟動以來的平均，100% 代表一顆核心</small></h2><p id="processes-status" role="status">正在取得資料…</p><div class="rankings"><div><h3>CPU 排行</h3><div class="table-wrap"><table><thead><tr><th>PID</th><th>程序</th><th>CPU</th><th>RAM</th></tr></thead><tbody id="cpu-processes"></tbody></table></div></div><div><h3>記憶體排行</h3><div class="table-wrap"><table><thead><tr><th>PID</th><th>程序</th><th>RAM</th><th>RSS</th></tr></thead><tbody id="memory-processes"></tbody></table></div></div></div></section>
+<section class="panel"><h2>USB 裝置 <small>包含 USB root hub 與 hub；未顯示序號</small></h2><p id="usb-status" role="status">正在取得資料…</p><div class="table-wrap"><table><thead><tr><th>Bus / Device</th><th>VID:PID</th><th>製造商 / 產品</th><th>連線速率</th></tr></thead><tbody id="usb"></tbody></table></div></section>
+<section class="panel"><div class="log-header"><div><h2>核心日誌 <code>dmesg</code></h2><p id="log-status">按下按鈕取得日誌快照</p></div><div><label>行數 <select id="lines"><option>100</option><option selected>200</option><option>500</option><option>1000</option></select></label> <button id="logs">讀取日誌</button></div></div><label class="filter">篩選目前快照 <input id="filter" type="search" placeholder="例如 usb、error、voltage"></label><pre id="log" tabindex="0">尚未取得日誌</pre></section>
+<footer>資料來自這台樹莓派 · 無系統修改操作 · 內網驗證用途，尚未提供登入與 HTTPS</footer>
+</main></body></html>
